@@ -17,19 +17,17 @@ local addFile = function(name, dir)
     local prefix = string.Left(name, 3)
     local path = dir..name
 
-    if SERVER and prefix == 'sv_' then
+    if prefix == 'sv_' then
         addSv(path)
         return
     end
 
-    if prefix == 'sh_' then
-        addSh(path)
+    if prefix == 'cl_' then
+        addCl(path)
         return
     end
 
-    if CLIENT and prefix == 'cl_' then
-        addCl(path)
-    end
+    addSh(path)
 end
 
 local addDir = function(name)
