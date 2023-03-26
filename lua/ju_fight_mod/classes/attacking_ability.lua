@@ -1,0 +1,2 @@
+
+print 'attacking_ability'

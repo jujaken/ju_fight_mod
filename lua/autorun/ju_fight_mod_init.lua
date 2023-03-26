@@ -1,6 +1,7 @@
 ju = ju or {}
 ju.fight = ju.fight or {}
 ju.fight.cfg = ju.fight.cfg or {}
+ju.fight.classes = ju.fight.classes or {}
 ju.fight.listSkills = ju.fight.listSkills or {}
 
 
@@ -45,8 +46,11 @@ end
 addSh(rDir..'cfg.lua')
 addDir('utils')
 addDir('classes')
+addDir('extensions')
 addSh(rDir..'skills.lua')
 addDir('vgui')
 addDir('hooks')
+addSh(rDir..'commands.lua')
 
-MsgC(ju.fight.cfg.colors.light_green, "~~~\nJuliandrKen (Julik#8946) fighting mod was loaded. Let's go!\n~~~\n")
+
+ju.fight.console.log "~~~\tJuliandrKen (Julik#8946) fighting mod was loaded. Let's go!\t~~~"
