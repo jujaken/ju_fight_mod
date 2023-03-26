@@ -12,7 +12,8 @@ local netInstructions = {
 local ABILITY = {
     ['manacost'] = cfg.defaultMana / 5,
     ['cooldown'] = 15, -- in seconds
-    ['iconPath'] = cfg.defaultIconPath, -- in seconds
+    ['iconPath'] = cfg.defaultIconPath,
+    ['useSound'] = cfg.defaultUseSound,
 }
 
 local ABILITY = {}
@@ -45,6 +46,12 @@ end
 
 function ABILITY:SetCooldown(cooldown)
     self.cooldown = cooldown
+
+    return self
+end
+
+function ABILITY:SetIconPath(iconPath)
+    self.iconPath = iconPath
 
     return self
 end

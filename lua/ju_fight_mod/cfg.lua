@@ -32,6 +32,8 @@ cfg.colors = {
 
 cfg.defaultIconPath = ''
 
+cfg.defaultUseSound = ''
+
 cfg.defaultCamera = { 0, 0, 0 }
 
 -- surface.CreateFont('', {})
