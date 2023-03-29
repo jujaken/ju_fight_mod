@@ -3,10 +3,9 @@ if SERVER then
 
     local function getPlayerFromArgs(args)
         if !args then return end
-        
-        local ply = player.GetBySteamID(args[1])
+
+        return player.GetBySteamID(args[1])
     end 
-    
     
     concommand.Add('ju_fight_get_all', function(ply, cmd, args, argStr)
         PrintTable(ju.fight.data.GetAll())
@@ -46,6 +45,7 @@ if SERVER then
 
     concommand.Add('ju_fight_set_player_fight_mod', function(ply, cmd, args, argStr)
         local ply = getPlayerFromArgs(args)
+        if !ply then return end
 
         ply:SetFightMod(tobool(args[2]))
     end)

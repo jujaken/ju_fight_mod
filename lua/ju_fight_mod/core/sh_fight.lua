@@ -13,15 +13,23 @@ if SERVER then
 else
      
     function ju.fight.SetFightModState(bValue)
-
+        
         if bValue then
-            ju.fight.fightModState = vgui.Create('JuAbilityHud') 
+            local fightModState = vgui.Create('JuAbilityHud')
+            fightModState:Center()
+            
+            ju.fight.fightModState = fightModState
+
+            print ' FIGHT MOD ! '
+
             return
         end
         
         if IsValid(ju.fight.fightModState) then
-            ju.fight.fightModState:Remove()
-            ju.fight.fightModState = nil
+            local fightModState = ju.fight.fightModState
+
+            fightModState:Remove()
+            fightModState = nil
         end
 
     end
