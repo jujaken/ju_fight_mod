@@ -11,7 +11,7 @@ local netInstructions = {
 
 local ABILITY = {
     ['manacost'] = cfg.defaultMana / 5,
-    ['cooldown'] = cfg.defaultCooldown
+    ['cooldown'] = cfg.defaultCooldown,
     ['iconPath'] = cfg.defaultIconPath,
     ['useSound'] = cfg.defaultUseSound,
     ['title'] = cfg.defaultTitle,
@@ -25,7 +25,7 @@ function ABILITY:GetNetStr(id)
     return netInstructions[1] .. '_' .. self.uniqueId
 end
 
-function ABLILITY:New(uniqueId)
+function ABILITY:New(uniqueId)
     assert(uniqueId, 'U a really so stupid? U ability don`t have fucking `uniqueId`!')
 
     self.uniqueId = uniqueId
@@ -36,6 +36,7 @@ function ABLILITY:New(uniqueId)
         util.AddNetworkString(self:GetNetStr(k))
     end
 
+    PrintTable(self)
     return setmetatable({}, self)
 end
 

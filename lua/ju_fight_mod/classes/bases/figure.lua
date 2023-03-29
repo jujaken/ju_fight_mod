@@ -6,8 +6,10 @@ local FIGURE = {}
 
 FIGURE.__index = FIGURE
 
-function FIGURE:new(startVector)
+function FIGURE:New(startVector)
     self.startVector = startVector
+
+    return self
 end
 
 function FIGURE:Draw(sortFunc)
@@ -17,7 +19,7 @@ function FIGURE:Draw(sortFunc)
         players = sortFunc(self.startVector)
     end
 
-    for _, ply do ipairs(players) do
+    for _, ply in ipairs(players) do
         net.Start()
         net.Send(ply)
     end

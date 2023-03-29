@@ -1,3 +1,4 @@
+
 ju = ju or {}
 ju.fight = ju.fight or {}
 ju.fight.cfg = ju.fight.cfg or {}
@@ -46,11 +47,17 @@ end
 
 addSh(rDir..'cfg.lua')
 addDir('utils')
+
+addDir('classes/bases')
 addDir('classes')
+
 addDir('extensions')
+
 addSh(rDir..'skills.lua')
+
 addDir('vgui')
 addDir('hooks')
+
 addSh(rDir..'commands.lua')
 
 

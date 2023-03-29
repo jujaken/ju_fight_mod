@@ -5,7 +5,7 @@ local classes = ju.fight.classes
 
 local attack = classes.ATTACKING_ABILITY
 
-attack:new('fireball')
+attack:New('fireball')
     :SetAttackType()
     :SetTargetType(LINE_ZONE)
     :SetDist()
@@ -20,7 +20,7 @@ attack:new('fireball')
 
 local protect = classes.PROTECTIVE_ABILITY
 
-protect:new('water_protection')
+protect:New('water_protection')
     :SetAntiAttackType()
     :SetTargetType(ON_SPHERE)
     :SetRadius(100)
@@ -32,7 +32,7 @@ protect:new('water_protection')
 
 local support = classes.SUPPORT_ABILITY
 
-support:new('sun_hill')
+support:New('sun_hill')
     :SetAntiAttackType()
     :SetTargetType(ONLY_USER)
     .OnUsed = function(self, client, targets)

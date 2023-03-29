@@ -3,15 +3,13 @@ local cfg = ju.fight.cfg
 local GM = GM or GAMEMODE
 local setmetatable = setmetatable
 
-
-local ATTACKING_ABILITY = setmetatable({
+local ATTACKING_ABILITY = {
 
     ['damage'] = cfg.defaultDamage,
 
     ['attackType'] = cfg.defaultAttackType,
     
-}, ju.fight.classes.ABILITY)
-
+}
 
 function ATTACKING_ABILITY:SetDamage(damage)
     self.damage = num
@@ -24,3 +22,5 @@ function ATTACKING_ABILITY:SetAttackType(attackType)
 
     return self
 end
+
+ju.fight.classes.ATTACKING_ABILITY = setmetatable(ATTACKING_ABILITY, ju.fight.classes.ABILITY)
