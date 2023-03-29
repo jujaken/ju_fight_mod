@@ -8,8 +8,8 @@ local attack = classes.ATTACKING_ABILITY
 attack:New('fireball')
     :SetAttackType()
     :SetTargetType(LINE_ZONE)
-    :SetDist()
-    :SetRadius()
+    -- :SetDist()
+    -- :SetRadius()
     :SetDamage()
     :SetClientNoTarget(true)
     .OnUsed = function(self, client, targets)
@@ -23,7 +23,7 @@ local protect = classes.PROTECTIVE_ABILITY
 protect:New('water_protection')
     :SetAntiAttackType()
     :SetTargetType(ON_SPHERE)
-    :SetRadius(100)
+    -- :SetRadius(100)
     .OnUsed = function(self, client, targets)
         
     end
@@ -33,7 +33,6 @@ protect:New('water_protection')
 local support = classes.SUPPORT_ABILITY
 
 support:New('sun_hill')
-    :SetAntiAttackType()
     :SetTargetType(ONLY_USER)
     .OnUsed = function(self, client, targets)
         

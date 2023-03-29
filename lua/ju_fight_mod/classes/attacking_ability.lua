@@ -23,4 +23,6 @@ function ATTACKING_ABILITY:SetAttackType(attackType)
     return self
 end
 
-ju.fight.classes.ATTACKING_ABILITY = setmetatable(ATTACKING_ABILITY, ju.fight.classes.ABILITY)
+ATTACKING_ABILITY = setmetatable(ATTACKING_ABILITY, ju.fight.classes.ABILITY)
+
+ju.fight.classes.ATTACKING_ABILITY = ATTACKING_ABILITY

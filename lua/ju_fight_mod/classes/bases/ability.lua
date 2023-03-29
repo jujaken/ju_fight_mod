@@ -36,7 +36,8 @@ function ABILITY:New(uniqueId)
         util.AddNetworkString(self:GetNetStr(k))
     end
 
-    PrintTable(self)
+    self.__index = self
+
     return setmetatable({}, self)
 end
 
@@ -83,6 +84,11 @@ if SERVER then
         return self
     end
 
+    function ABILITY:SetClientNoTarget(bValue)
+        self.clientNoTarget = bValue
+
+        return self
+    end
 else
 
 end
