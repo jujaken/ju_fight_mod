@@ -46,6 +46,11 @@ if SERVER then
         
     end
 
+    function PLAYER:SetFightMod(bValue)
+        net.Start('JuSetFightMod')
+            net.WriteBool(bValue)
+        net.Send(self)
+    end    
 else
     
 end

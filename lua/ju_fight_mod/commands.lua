@@ -44,6 +44,12 @@ if SERVER then
         ju.fight.console.log('Data' .. ply:Nick() .. ' (' .. ply:SteamID() .. ') was deleted!')
     end)
 
+    concommand.Add('ju_fight_set_player_fight_mod', function(ply, cmd, args, argStr)
+        local ply = getPlayerFromArgs(args)
+
+        ply:SetFightMod(tobool(args[2]))
+    end)
+
 else
 
     
