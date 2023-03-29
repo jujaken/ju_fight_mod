@@ -7,6 +7,7 @@ local setmetatable = setmetatable
 
 local netInstructions = {
     [1] = 'Use',
+    [2] = 'ChangeVar'
 }
 
 local ABILITY = {
@@ -21,45 +22,53 @@ local ABILITY = {}
 
 ABILITY.__index = ABILITY
 
+function ABILITY:Use()
+
+    if CLIENT then
+
+        net.Start(self:GetNetStr(1))
+            -- net.WriteString(self.uniqueID)
+        net.SendToServer()
+
+    else
+
+        hook.Call('JuAbilityWasUsed', GM, self.uniqueId)
+
+    end
+
+end
+
 function ABILITY:GetNetStr(id)
     return netInstructions[1] .. '_' .. self.uniqueId
 end
 
-function ABILITY:New(uniqueId)
-    assert(uniqueId, 'U a really so stupid? U ability don`t have fucking `uniqueId`!')
-
-    self.uniqueId = uniqueId
-
-    list[self.uniqueId] = self
-
-    for k, _ in ipairs(netInstructions) do
-        util.AddNetworkString(self:GetNetStr(k))
-    end
-
-    self.__index = self
-
-    return setmetatable({}, self)
-end
-
-function ABILITY:OnUsed(client, targets)
-    
-end
-
-function ABILITY:PostUsed(client, targets)
-    
-end
-
-function ABILITY:Use()
-    if CLIENT then
-        net.Start(self:GetNetStr(1))
-            -- net.WriteString(self.uniqueID)
-        net.SendToServer()
-    else
-        hook.Call('JuAbilityWasUsed', GM, self.uniqueId)
-    end
-end
-
 if SERVER then
+
+    function ABILITY:New(uniqueId)
+        assert(uniqueId, 'U a really so stupid? U ability don`t have fucking `uniqueId`!')
+    
+        self.uniqueId = uniqueId
+    
+        list[self.uniqueId] = self
+    
+        for k, _ in ipairs(netInstructions) do
+            util.AddNetworkString(self:GetNetStr(k))
+        end
+    
+        self.__index = self
+    
+        return setmetatable({}, self)
+    end
+    
+    function ABILITY:OnUsed(client, targets)
+        
+    end
+    
+    function ABILITY:PostUsed(client, targets)
+        
+    end
+
+
     function ABILITY:SetManacost(manacost)
         self.manacost = manacost
     
@@ -89,7 +98,10 @@ if SERVER then
 
         return self
     end
+
 else
+
+    
 
 end
 
