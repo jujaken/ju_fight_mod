@@ -1,6 +1,6 @@
 
 local cfg = ju.fight.cfg
-local list = ju.fight.listSkills
+local abilities = ju.fight.listAbilities
 
 local GM = GM or GAMEMODE
 local setmetatable = setmetatable

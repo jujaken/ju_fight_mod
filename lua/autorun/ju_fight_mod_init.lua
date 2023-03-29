@@ -3,7 +3,7 @@ ju = ju or {}
 ju.fight = ju.fight or {}
 ju.fight.cfg = ju.fight.cfg or {}
 ju.fight.classes = ju.fight.classes or {}
-ju.fight.listSkills = ju.fight.listSkills or {}
+ju.fight.listAbilities = ju.fight.listAbilities or {}
 ju.fight.enums = ju.fight.enums or {}
 
 
@@ -46,7 +46,7 @@ end
 -- includes:
 
 addSh(rDir..'cfg.lua')
-addDir('utils')
+addDir('core')
 
 addDir('classes/bases')
 addDir('classes')
