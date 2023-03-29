@@ -11,9 +11,10 @@ local netInstructions = {
 
 local ABILITY = {
     ['manacost'] = cfg.defaultMana / 5,
-    ['cooldown'] = 15, -- in seconds
+    ['cooldown'] = cfg.defaultCooldown
     ['iconPath'] = cfg.defaultIconPath,
     ['useSound'] = cfg.defaultUseSound,
+    ['title'] = cfg.defaultTitle,
 }
 
 local ABILITY = {}
@@ -38,25 +39,11 @@ function ABLILITY:New(uniqueId)
     return setmetatable({}, self)
 end
 
-function ABILITY:SetManacost(manacost)
-    self.manacost = manacost
-
-    return self
+function ABILITY:OnUsed(client, targets)
+    
 end
 
-function ABILITY:SetCooldown(cooldown)
-    self.cooldown = cooldown
-
-    return self
-end
-
-function ABILITY:SetIconPath(iconPath)
-    self.iconPath = iconPath
-
-    return self
-end
-
-function ABILITY:OnUsed()
+function ABILITY:PostUsed(client, targets)
     
 end
 
@@ -69,5 +56,35 @@ function ABILITY:Use()
         hook.Call('JuAbilityWasUsed', GM, self.uniqueId)
     end
 end
+
+if SERVER then
+    function ABILITY:SetManacost(manacost)
+        self.manacost = manacost
+    
+        return self
+    end
+    
+    function ABILITY:SetCooldown(cooldown)
+        self.cooldown = cooldown
+    
+        return self
+    end
+    
+    function ABILITY:SetIconPath(iconPath)
+        self.iconPath = iconPath
+    
+        return self
+    end
+    
+    function ABILITY:SetTargetType(typeIndex)
+        self.targetType = typeIndex
+    
+        return self
+    end
+
+else
+
+end
+
 
 ju.fight.classes.ABILITY = ABILITY

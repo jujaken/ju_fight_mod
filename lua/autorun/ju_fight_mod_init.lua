@@ -3,6 +3,7 @@ ju.fight = ju.fight or {}
 ju.fight.cfg = ju.fight.cfg or {}
 ju.fight.classes = ju.fight.classes or {}
 ju.fight.listSkills = ju.fight.listSkills or {}
+ju.fight.enums = ju.fight.enums or {}
 
 
 local rDir = 'ju_fight_mod/'

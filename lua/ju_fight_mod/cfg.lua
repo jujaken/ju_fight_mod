@@ -1,39 +1,53 @@
 
 local cfg = ju.fight.cfg
 
+cfg.manaName = { 'Мана', 'Маны' }
 
 cfg.defaultMana = 100
+
+cfg.defaultCooldown = 15
+
+cfg.defaultDamage = 25
+
+cfg.defaultAttackType = 1
 
 cfg.swepsSupportingAbilities = {
     ['name_swep'] = true,
 }
 
 
-if !SERVER then return end
+if SERVER then
 
 
--- Keys:
 
-cfg.useAbilityKey = KEY_T
+else
 
-cfg.counterclockwiseAbilityKey = KEY_F
+    -- Keys:
 
-cfg.clockwiseAbilityKey = KEY_G
+    cfg.useAbilityKey = KEY_T
 
--- Colors
+    cfg.counterclockwiseAbilityKey = KEY_F
 
-cfg.colors = {
-    ['red'] = Color(244, 32, 32),
-    ['blue'] = Color(35, 60, 201),
-    ['yellow'] = Color(205, 195, 47),
-    ['green'] = Color(39, 182, 72),
-}
+    cfg.clockwiseAbilityKey = KEY_G
+
+    -- Colors
+
+    cfg.colors = {
+        ['red'] = Color(244, 32, 32),
+        ['blue'] = Color(35, 60, 201),
+        ['yellow'] = Color(205, 195, 47),
+        ['green'] = Color(39, 182, 72),
+    }
 
 
-cfg.defaultIconPath = ''
+    cfg.defaultIconPath = ''
 
-cfg.defaultUseSound = ''
+    cfg.defaultUseSound = ''
 
-cfg.defaultCamera = { 0, 0, 0 }
+    cfg.defaultTitle = '~ Неизвестная способность ~'
 
--- surface.CreateFont('', {})
+    cfg.defaultCamera = { 0, 0, 0 }
+
+    -- surface.CreateFont('', {})
+    
+end
