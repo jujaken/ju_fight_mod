@@ -6,6 +6,7 @@ local abilities = ju.fight.listAbilities
 local numberVertices = 4
 local numberAbilities = 4
 
+local sizeIcon = 50
 
 local function getTablePositionsForSquareItems(numItems, sizePanel, sizeItem)
 
@@ -16,7 +17,7 @@ local function getTablePositionsForSquareItems(numItems, sizePanel, sizeItem)
     local startPi, step = pi / 2, 2 * pi / numItems
     local halfSizePanel, halfSizeItem = sizePanel / 2, sizeItem / 2
 
-    for i = 1, numItems, 1 do
+    for i = 1, numItems - 2, 1 do
 
         local piPos = startPi - step * ( i - 1 )
         
@@ -62,22 +63,21 @@ PANEL = {}
 
 function PANEL:Init()
     
-    local h = ScrH() / 4
-    local w = h
+    local size = ScrH() / 4
+    self:SetSize(size, size)
 
-    self:SetSize(w, h)
-    
-    self:CreateAbilityButtons(w)
+    self:CreateAbilityButtons(size)
 
 end
 
-function PANEL:CreateAbilityButtons(w)
+function PANEL:CreateAbilityButtons(size)
 
     self.abilityButtons = {}
 
-    for k, v in ipairs(getTablePositionsForSquareItems(numberAbilities, w, 50)) do
+    for k, v in ipairs(getTablePositionsForSquareItems(numberAbilities, size, sizeIcon)) do
         
         self.abilityButtons[k] = vgui.Create('JuAbilityHudButton', self)
+        self.abilityButtons[k]:SetSize(sizeIcon, sizeIcon)
         self.abilityButtons[k]:SetPos(v.x, v.y)
 
     end
