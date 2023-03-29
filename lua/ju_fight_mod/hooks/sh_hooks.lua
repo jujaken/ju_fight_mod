@@ -1,2 +1,0 @@
-
-print 'sh_hooks'
