@@ -9,6 +9,7 @@ if SERVER then
 
         
     end)
+    
 else
      
     function ju.fight.SetFightModState(bValue)
