@@ -10,6 +10,8 @@ local sizeIcon = 50
 
 local function getTablePositionsForSquareItems(numItems, sizePanel, sizeItem)
 
+    numItems = 4
+
     local posTable = {}    
 
     local pi, cos, sin = math.pi, math.cos, math.sin
@@ -17,18 +19,16 @@ local function getTablePositionsForSquareItems(numItems, sizePanel, sizeItem)
     local startPi, step = pi / 2, 2 * pi / numItems
     local halfSizePanel, halfSizeItem = sizePanel / 2, sizeItem / 2
 
-    for i = 1, numItems - 2, 1 do
+    for i = 1, numItems, 1 do
 
         local piPos = startPi - step * ( i - 1 )
         
         posTable[i] = { 
-            ['x'] = halfSizePanel * cos(piPos) - halfSizeItem, 
-            ['y'] = halfSizePanel * sin(piPos) - halfSizeItem
+            ['x'] = halfSizePanel + halfSizePanel * cos(piPos) - halfSizeItem, 
+            ['y'] = halfSizePanel + halfSizePanel * sin(piPos) - halfSizeItem
         }
 
     end
-
-    PrintTable(posTable)
 
     return posTable
     
@@ -68,6 +68,11 @@ function PANEL:Init()
 
     self:CreateAbilityButtons(size)
 
+end
+
+function PANEL:Paint(w, h)
+    surface.SetDrawColor(200, 200, 200)
+    surface.DrawRect(0, 0, w, h)
 end
 
 function PANEL:CreateAbilityButtons(size)
