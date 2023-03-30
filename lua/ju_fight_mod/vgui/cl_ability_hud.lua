@@ -4,19 +4,19 @@ local ScrW, ScrH = ScrW, ScrH
 local abilities = ju.fight.listAbilities
 
 local numberVertices = 4
-local numberAbilities = 4
+local numberAbilities = 6
 
-local sizeIcon = 25
+local sizeIcon = 32
 
 local function getTablePositionsForSquareItems(numItems, sizePanel, sizeItem)
-
-    numItems = 4
 
     local posTable = {}    
 
     local pi, cos, sin = math.pi, math.cos, math.sin
 
-    local startPi, step = pi / 2, 2 * pi / numItems
+    sizePanel = sizePanel - sizeItem
+
+    local startPi, step = - pi / 2, 2 * pi / numItems
     local halfSizePanel, halfSizeItem = sizePanel / 2, sizeItem / 2
 
     for i = 1, numItems, 1 do
@@ -24,8 +24,8 @@ local function getTablePositionsForSquareItems(numItems, sizePanel, sizeItem)
         local piPos = startPi - step * ( i - 1 )
         
         posTable[i] = { 
-            ['x'] = halfSizePanel + halfSizePanel * cos(piPos) - halfSizeItem, 
-            ['y'] = halfSizePanel + halfSizePanel * sin(piPos) - halfSizeItem
+            ['x'] = halfSizePanel + halfSizeItem + halfSizePanel * cos(piPos) - halfSizeItem, 
+            ['y'] = halfSizePanel + halfSizeItem + halfSizePanel * sin(piPos) - halfSizeItem
         }
 
     end
@@ -72,6 +72,9 @@ end
 function PANEL:Paint(w, h)
     surface.SetDrawColor(21, 105, 142, 150)
     surface.DrawRect(0, 0, w, h)
+
+    -- for test:
+    -- surface.DrawCircle(w / 2, h / 2, (w / 2 - sizeIcon) * math.cos(CurTime()), 33, 33, 33, 255)
 end
 
 function PANEL:CreateAbilityButtons(size)
