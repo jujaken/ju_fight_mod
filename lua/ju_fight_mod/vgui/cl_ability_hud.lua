@@ -6,7 +6,7 @@ local abilities = ju.fight.listAbilities
 local numberVertices = 4
 local numberAbilities = 4
 
-local sizeIcon = 50
+local sizeIcon = 25
 
 local function getTablePositionsForSquareItems(numItems, sizePanel, sizeItem)
 
@@ -48,7 +48,7 @@ function PANEL:Init()
 end
 
 function PANEL:Paint(w, h)
-    surface.SetDrawColor(230, 10, 10, 158)
+    surface.SetDrawColor(98, 67, 93, 214)
     surface.DrawRect(0, 0, w, h)
 end
 
@@ -67,11 +67,10 @@ function PANEL:Init()
     self:SetSize(size, size)
 
     self:CreateAbilityButtons(size)
-
 end
 
 function PANEL:Paint(w, h)
-    surface.SetDrawColor(200, 200, 200)
+    surface.SetDrawColor(21, 105, 142, 150)
     surface.DrawRect(0, 0, w, h)
 end
 
